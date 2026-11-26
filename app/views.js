@@ -89,7 +89,7 @@ function economyView() {
   const tab = econTab;
   let chart = '', note = '';
   if (tab === 'gdp') {
-    chart = lineChart([{ name: 'GDP', values: SERIES.gdp, color: PALETTE.navy }], shortYears, { label: 'GDP 2015-2025', format: 'money' });
+    chart = lineChart([{ name: 'GDP', values: SERIES.gdp, color: PALETTE.navy }], shortYears, { label: 'GDP 2015-2025', format: 'money', min: 350, height: 170 });
     note = 'GDP in current prices. Real GDP (adjusted for prices) grew 2.6% in 2025.';
   } else if (tab === 'prices') {
     chart = barChart(SERIES.cpi, shortYears, { label: 'CPI by year', format: 'pct', highlight: 7 });
@@ -102,7 +102,7 @@ function economyView() {
     note = 'Goods trade, $ billion. The 2025 surplus of $17.3bn is the largest on record.';
   }
   const sectorColors = [PALETTE.navy, PALETTE.teal, '#7fb3a8', PALETTE.amber, '#c9a86a', '#9aa8b5'];
-  const donut = donutChart(SECTORS.map((s, i) => ({ ...s, color: sectorColors[i] })), { centre: '68.4%', centreSub: 'services share' });
+  const donut = donutChart(SECTORS.map((s, i) => ({ ...s, color: sectorColors[i] })), { centre: '68.4%', centreSub: 'services share', size: 180 });
   const legend = SECTORS.map((s, i) => `<li><span class="sw" style="background:${sectorColors[i]}"></span>${s.name} <b>${s.share}%</b> — ${s.note}</li>`).join('');
   const partners = PARTNERS.map((p) => `<tr><td>${p.name}</td><td>${p.exports}%</td><td>${p.imports}%</td></tr>`).join('');
   return `
